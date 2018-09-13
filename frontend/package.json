@@ -1,0 +1,31 @@
+{
+  "name": "@shopgate/auth-facebook",
+  "version": "1.0.0",
+  "description": "Shopgate Connect auth facebook extension",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:shopgate/ext-auth-facebook.git"
+  },
+  "license": "Apache-2.0",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint --ignore-path ../.gitignore --ext .js --ext .jsx ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@shopgate/eslint-config": "5.7.3",
+    "@shopgate/pwa-common": "5.7.3",
+    "@shopgate/pwa-core": "5.7.3",
+    "@shopgate/pwa-ui-shared": "5.7.3",
+    "@shopgate/pwa-unit-test": "5.7.3",
+    "eslint": "^4.17.0",
+    "glamor": "^2.20.40",
+    "jest": "^23.5.0",
+    "prop-types": "^15.6.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-hot-loader": "4.0.1",
+    "react-redux": "^5.0.5",
+    "react-transform-catch-errors": "^1.0.2",
+    "redbox-react": "^1.5.0"
+  }
+}
