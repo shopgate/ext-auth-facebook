@@ -43,3 +43,13 @@ export const fbLogout = () => ({
 export const fbLogoutSuccess = () => ({
   type: types.FB_LOGOUT_SUCCESS,
 });
+
+/**
+ * Creates the dispatched FB_TOGGLE action object.
+ * @param {boolean} visible visible
+ * @return {{type: string, visible: boolean}}
+ */
+export const fbToggle = visible => ({
+  type: types.FB_TOGGLE,
+  visible,
+});
