@@ -1,7 +1,6 @@
 import {
   FB_LOGIN,
   FB_LOGOUT_SUCCESS,
-  FB_LOGIN_SUCCESS,
   FB_LOGIN_FAILED,
 } from './../constants/ActionTypes';
 
@@ -23,16 +22,9 @@ export default (state = initialState, action) => {
         disabled: true,
       };
 
-    case FB_LOGIN_SUCCESS:
-      return {
-        ...state,
-        profile: action.profile,
-      };
-
     case FB_LOGIN_FAILED:
       return {
         ...state,
-        error: action.errorMessage,
         disabled: false,
       };
 

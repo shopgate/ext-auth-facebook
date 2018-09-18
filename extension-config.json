@@ -65,6 +65,20 @@
       "output" : [
         {"key": "userId"}
       ]
+    },
+    {
+      "path": "extension/auth/checkAuth.js",
+      "description": "Check on app start if user auth still valid",
+      "hooks" : ["shopgate.user.getUser.v1:before"],
+      "input" : [],
+      "output" : []
+    },
+    {
+      "path": "extension/auth/logout.js",
+      "description": "Reset user data on logout",
+      "hooks" : ["shopgate.user.logout.v1:after"],
+      "input" : [],
+      "output" : []
     }
   ]
 }

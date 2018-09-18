@@ -13,7 +13,8 @@ const isIos = themeName.includes('ios');
  */
 const mapStateToProps = state => ({
   disabled: getDisabled(state),
-  hidden: isIos && getHistoryPathname(state) === LOGIN_PATH,
+  hidden: ((isIos && getHistoryPathname(state) === LOGIN_PATH)
+    || (!isIos && getHistoryPathname(state) !== LOGIN_PATH)),
 });
 
 /**

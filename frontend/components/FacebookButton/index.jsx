@@ -17,7 +17,7 @@ const isGmd = themeName.includes('gmd');
  */
 const FacebookButton = ({ hidden, disabled, login }) => (
   <Fragment>
-    {hidden && <div className={style.padLine}/>}
+    {hidden && null}
     {!hidden &&
     <Fragment>
       <div className={style.buttonWrapper}>

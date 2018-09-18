@@ -63,7 +63,7 @@ module.exports = async (context, { strategy, parameters: { token } }) => {
 
   // Save user under fb ID
   try {
-    await context.storage.extension.set(response.id, user)
+    await context.storage.device.set('facebook_user', user)
   } catch (err) {
     context.log.warn(err, 'Extension storage error')
     throw new Error()
