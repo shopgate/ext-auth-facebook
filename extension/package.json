@@ -1,0 +1,25 @@
+{
+  "name": "@shopgate/auth-facebook",
+  "version": "1.0.0",
+  "description": "Shopgate Connect auth facebook extension",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:shopgate/ext-auth-facebook.git"
+  },
+  "scripts": {
+    "test": "mocha --use_strict --recursive test/unit",
+    "standard": "./node_modules/.bin/standard"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "fb": "^2.0.0"
+  },
+  "devDependencies": {
+    "standard": "latest"
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ]
+  }
+}

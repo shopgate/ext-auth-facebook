@@ -1,0 +1,70 @@
+{
+  "version": "1.0.0",
+  "id": "@shopgate/auth-facebook",
+  "trusted": true,
+  "configuration": {
+    "facebookConfig": {
+      "type": "bigApi",
+      "destination": "backend",
+      "default": true,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/service_config_facebook?parsed=true",
+        "key": "value"
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "FacebookButton",
+      "path": "frontend/components/FacebookButton/index.jsx",
+      "target": ["page.login.form.before", "user-menu.container.before"],
+      "type": "portals"
+    },
+    {
+      "id": "Subscriber",
+      "path": "frontend/subscriptions/index.js",
+      "type": "subscribers"
+    },
+    {
+      "id": "Reducer",
+      "path": "frontend/reducers/index.js",
+      "type": "reducers"
+    },
+    {
+      "id": "en-US",
+      "path": "frontend/locale/en-US.json",
+      "type": "translations"
+    },
+    {
+      "id": "de-DE",
+      "path": "frontend/locale/de-DE.json",
+      "type": "translations"
+    },
+    {
+      "id": "fr-FR",
+      "path": "frontend/locale/fr-FR.json",
+      "type": "translations"
+    },
+    {
+      "id": "nl-NL",
+      "path": "frontend/locale/nl-NL.json",
+      "type": "translations"
+    }
+  ],
+  "steps": [
+    {
+      "path": "extension/auth/login.js",
+      "description": "Auth with facebook strategy",
+      "hooks" : ["shopgate.user.loginUser.v1:loginUser"],
+      "input" : [
+        {"key": "strategy"},
+        {"key": "parameters"}
+      ],
+      "output" : [
+        {"key": "userId"}
+      ]
+    }
+  ]
+}
