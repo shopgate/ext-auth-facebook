@@ -1,15 +1,10 @@
-import { main$ } from '@shopgate/pwa-common/streams/main';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
-import login  from '@shopgate/pwa-common/actions/user/login';
+import login from '@shopgate/pwa-common/actions/user/login';
 import { userWillLogout$ } from '@shopgate/pwa-common/streams/user';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import event from '@shopgate/pwa-core/classes/Event';
 import { TOGGLE_LOGGED_IN } from '@shopgate/pwa-common/constants/ActionTypes';
-import {
-  fbLoginSuccess,
-  fbLoginFailed,
-  fbLogoutSuccess,
-} from './../action-creators';
+import { fbLoginSuccess, fbLoginFailed, fbLogoutSuccess } from './../action-creators';
 import facebookLogout from './../actions/facebookLogout';
 import { fbDidLogin$ } from './../streams/user';
 
