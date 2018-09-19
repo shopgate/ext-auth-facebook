@@ -2,6 +2,8 @@ const FB = require('fb')
 const AuthExpiredError = require('./../Error/AuthExpiredError')
 
 /**
+ * Api calls limitations
+ * @link https://developers.facebook.com/docs/graph-api/advanced/rate-limiting/
  * @param {SDKContext} context
  * @returns {Promise<>}
  */
@@ -23,6 +25,11 @@ module.exports = async (context) => {
     return
   }
 
+  if (!context.config.facebookConfig || !context.config.facebookConfig.app_id) {
+    context.log.warn('FB config is not given')
+    throw new Error('FB credentials are wrong')
+  }
+
   // Check if token still valid
   const fb = FB.extend({
     appId: context.config.facebookConfig.app_id,
@@ -33,13 +40,11 @@ module.exports = async (context) => {
   try {
     await fb.api('/me', { fields: 'id' })
   } catch (err) {
-    // Invalid OAuth access token,
-    if (err.response && err.response.error && err.response.error.code === 190) {
-      // Remove reference from storage
-      try { context.storage.device.del('facebook_user') } catch (ignore) {}
-      throw new AuthExpiredError()
-    }
     // Silently retry on next get user
     context.log.warn(err, 'FB api error')
+    // Invalid OAuth access token,
+    if (err.response && err.response.error && err.response.error.code === 190) {
+      throw new AuthExpiredError()
+    }
   }
 }

@@ -21,7 +21,7 @@ const fields = [
  * @param {{strategy: string, parameters: {token}}} input
  * @returns {Promise<{userId: string}>}
  */
-module.exports = async (context, { strategy, parameters: { token } }) => {
+module.exports = async (context, { strategy, parameters: { token, tokenExpiryDate } }) => {
   // is logged in
   if (context.meta.userId || strategy !== 'facebook' || !token) {
     return
@@ -63,7 +63,9 @@ module.exports = async (context, { strategy, parameters: { token } }) => {
     gender: response.gender,
     birthday: null,
     phone: null,
-    token
+    token,
+    tokenExpiryDate,
+    time: (new Date()).getTime() // tim when user created, checked, etc
   }
 
   // Save user under fb ID

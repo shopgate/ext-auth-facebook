@@ -76,7 +76,7 @@
     {
       "path": "extension/auth/logout.js",
       "description": "Reset user data on logout",
-      "hooks" : ["shopgate.user.logout.v1:after"],
+      "hooks" : ["shopgate.user.logoutUser.v1:after"],
       "input" : [],
       "output" : []
     }

@@ -1,9 +1,9 @@
 class AuthExpiredError extends Error {
-  constructor (cause = {message: ''}) {
+  constructor (cause = { message: '' }) {
     super(cause)
 
-    this.code = 'EACCESS'
-    this.message = 'Auth expire'
+    this.code = 'EAUTHFACEBOOK'
+    this.message = 'Facebook auth expire'
   }
 }
 
