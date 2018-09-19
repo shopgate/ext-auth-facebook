@@ -4,13 +4,15 @@ import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading
 import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { themeName } from '@shopgate/pwa-common/helpers/config';
-import { startFb$, finishFb$ } from '../streams/user';
+import { fbWillLogin$, fbDidLogin$, fbLoginFailed$ } from '../streams/user';
 import { fbToggle } from '../action-creators';
 
 const isGmd = themeName.includes('gmd');
 const isIos = themeName.includes('ios');
 
 export default (subscribe) => {
+  const finishFb$ = fbDidLogin$.merge(fbLoginFailed$);
+
   let fbPathEnter$;
   let fbPathLeave$;
 
@@ -25,7 +27,7 @@ export default (subscribe) => {
   }
 
   // View is loading
-  subscribe(startFb$, ({ dispatch, getState }) => {
+  subscribe(fbWillLogin$, ({ dispatch, getState }) => {
     dispatch(setViewLoading(getHistoryPathname(getState())));
   });
 

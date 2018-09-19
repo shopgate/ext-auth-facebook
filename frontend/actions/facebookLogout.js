@@ -1,4 +1,4 @@
-import AppCommand from '@shopgate/pwa-core//classes/AppCommand';
+import AppCommand from '@shopgate/pwa-core/classes/AppCommand';
 import { fbLogout } from './../action-creators';
 
 /**
