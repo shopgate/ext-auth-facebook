@@ -15,10 +15,12 @@ const isGmd = themeName.includes('gmd');
  * @param {Object} props props
  * @returns {JSX}
  */
-const FacebookButton = ({ hidden, disabled, login }) => (
-  <Fragment>
-    {hidden && <div className={style.padLine}/>}
-    {!hidden &&
+const FacebookButton = ({ visible, disabled, login }) => {
+  if (!visible) {
+    return null;
+  }
+
+  return (
     <Fragment>
       <div className={style.buttonWrapper}>
         <FbIcon className={style.fbIcon} />
@@ -34,14 +36,13 @@ const FacebookButton = ({ hidden, disabled, login }) => (
       </div>
       {isGmd && <OrLine />}
     </Fragment>
-  }
-  </Fragment>
-);
+  );
+};
 
 FacebookButton.propTypes = {
   disabled: PropTypes.bool.isRequired,
-  hidden: PropTypes.bool.isRequired,
   login: PropTypes.func.isRequired,
+  visible: PropTypes.bool.isRequired,
 };
 
 export default connect(FacebookButton);

@@ -6,7 +6,7 @@
     "facebookConfig": {
       "type": "bigApi",
       "destination": "backend",
-      "default": true,
+      "default": null,
       "params": {
         "method": "GET",
         "service": "config",

@@ -27,6 +27,11 @@ module.exports = async (context, { strategy, parameters: { token } }) => {
     return
   }
 
+  if (!context.config.facebookConfig || !context.config.facebookConfig.app_id) {
+    context.log.warn('FB config is not given')
+    throw new Error('FB credentials are wrong')
+  }
+
   const fb = FB.extend({
     appId: context.config.facebookConfig.app_id,
     appSecret: context.config.facebookConfig.app_secret
