@@ -15,28 +15,29 @@ const isGmd = themeName.includes('gmd');
  * @param {Object} props props
  * @returns {JSX}
  */
-const FacebookButton = ({ visible, disabled, login }) => (
-  <Fragment>
-    {!visible && null}
-    {visible &&
-      <Fragment>
-        <div className={style.buttonWrapper}>
-          <FbIcon className={style.fbIcon} />
-          <RippleButton
-            className={style.button}
-            onClick={login}
-            disabled={disabled}
-            type="primary"
-            testId="faceBookLogin"
-          >
-            <I18n.Text string="login.facebook" />
-          </RippleButton>
-        </div>
-        {isGmd && <OrLine />}
-      </Fragment>
-    }
-  </Fragment>
-);
+const FacebookButton = ({ visible, disabled, login }) => {
+  if (!visible) {
+    return null;
+  }
+
+  return (
+    <Fragment>
+      <div className={style.buttonWrapper}>
+        <FbIcon className={style.fbIcon} />
+        <RippleButton
+          className={style.button}
+          onClick={login}
+          disabled={disabled}
+          type="primary"
+          testId="faceBookLogin"
+        >
+          <I18n.Text string="login.facebook" />
+        </RippleButton>
+      </div>
+      {isGmd && <OrLine />}
+    </Fragment>
+  );
+};
 
 FacebookButton.propTypes = {
   disabled: PropTypes.bool.isRequired,
