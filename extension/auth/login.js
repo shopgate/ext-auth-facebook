@@ -75,8 +75,4 @@ module.exports = async (context, { strategy, parameters: { token, tokenExpiryDat
     context.log.warn(err, 'Extension storage error')
     throw new Error()
   }
-
-  return {
-    userId: `fb_${response.id}`
-  }
 }
