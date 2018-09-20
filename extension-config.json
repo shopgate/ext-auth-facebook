@@ -62,9 +62,7 @@
         {"key": "strategy"},
         {"key": "parameters"}
       ],
-      "output" : [
-        {"key": "userId"}
-      ]
+      "output" : []
     },
     {
       "path": "extension/auth/checkAuth.js",
