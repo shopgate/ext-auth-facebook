@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/auth-facebook",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "description": "Shopgate Connect auth facebook extension",
   "repository": {
     "type": "git",
@@ -19,7 +19,6 @@
     "@shopgate/pwa-unit-test": "5.9.0-beta.5",
     "eslint": "^4.17.0",
     "glamor": "^2.20.40",
-    "jest": "^23.5.0",
     "prop-types": "^15.6.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
