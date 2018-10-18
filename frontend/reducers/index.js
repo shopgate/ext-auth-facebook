@@ -1,8 +1,7 @@
-import { ERROR_LOGIN } from '@shopgate/pwa-common/constants/ActionTypes';
+import { ERROR_LOGIN, SUCCESS_LOGIN } from '@shopgate/pwa-common/constants/ActionTypes';
 import {
   FB_LOGIN,
   FB_LOGOUT_SUCCESS,
-  FB_LOGIN_SUCCESS,
   FB_LOGIN_FAILED,
   FB_TOGGLE,
 } from './../constants/ActionTypes';
@@ -32,17 +31,17 @@ export default (state = initialState, action) => {
         visible: action.visible,
       };
 
-    case FB_LOGIN_SUCCESS:
-      return {
-        ...state,
-        visible: false,
-      };
-
     case ERROR_LOGIN:
     case FB_LOGIN_FAILED:
       return {
         ...state,
         disabled: false,
+      };
+
+    case SUCCESS_LOGIN:
+      return {
+        ...state,
+        visible: false,
       };
 
     case FB_LOGOUT_SUCCESS:
