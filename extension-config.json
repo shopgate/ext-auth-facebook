@@ -3,6 +3,13 @@
   "id": "@shopgate/auth-facebook",
   "trusted": true,
   "configuration": {
+    "shopNumber": {
+      "type": "static",
+      "destination": "backend",
+      "params": {
+        "value": "%(shopId)s"
+      }
+    },
     "facebookConfig": {
       "type": "bigApi",
       "destination": "backend",
@@ -17,9 +24,15 @@
   },
   "components": [
     {
-      "id": "FacebookButton",
-      "path": "frontend/components/FacebookButton/index.jsx",
-      "target": ["page.login.form.before", "user-menu.container.before"],
+      "id": "FacebookButtonMenu",
+      "path": "frontend/components/FacebookForm/components/FacebookButton/index.jsx",
+      "target": ["user-menu.container.before"],
+      "type": "portals"
+    },
+    {
+      "id": "FacebookButtonLogin",
+      "path": "frontend/components/FacebookForm/index.jsx",
+      "target": ["page.login.form.before"],
       "type": "portals"
     },
     {

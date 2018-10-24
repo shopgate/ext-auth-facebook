@@ -4,6 +4,7 @@ import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading
 import { disableLogin } from '@shopgate/pwa-common/action-creators/user';
 import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { themeName } from '@shopgate/pwa-common/helpers/config';
 import { userDidLogin$, loginDidFail$ } from '@shopgate/pwa-common/streams/user';
 import { fbWillLogin$, fbDidLogin$, fbLoginFailed$ } from '../streams/user';
@@ -11,6 +12,8 @@ import { fbToggle } from '../action-creators';
 
 const isGmd = themeName.includes('gmd');
 const isIos = themeName.includes('ios');
+
+const MORE_PATH = '/more';
 
 export default (subscribe) => {
   // Token was aquired and logic action finished. (failed or suceeded)
@@ -28,8 +31,10 @@ export default (subscribe) => {
     fbPathLeave$ = routeDidLeave(LOGIN_PATH);
   }
   if (isIos) {
-    fbPathEnter$ = routeDidEnter('/more');
-    fbPathLeave$ = routeDidLeave('/more');
+    fbPathEnter$ = routeDidEnter(MORE_PATH).merge(routeDidEnter(LOGIN_PATH));
+    fbPathLeave$ = routeDidLeave(MORE_PATH)
+      .filter(action => action.pathname !== LOGIN_PATH)
+      .merge(routeDidLeave(LOGIN_PATH).filter(action => action.pathname !== MORE_PATH));
   }
 
   // Login is disabled as soon as login process is started and loading indicators are shown.

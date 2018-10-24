@@ -53,3 +53,29 @@ export const fbToggle = visible => ({
   type: types.FB_TOGGLE,
   visible,
 });
+
+/**
+ * Creates the dispatched FB_FETCH_CONFIG action object.
+ * @return {{type: string }}
+ */
+export const fbFetchConfig = () => ({
+  type: types.FB_FETCH_CONFIG,
+});
+
+/**
+ * Creates the dispatched FB_FETCH_CONFIG_SUCCESS action object.
+ * @param {Object} config The fetched configuration.
+ * @return {Object}
+ */
+export const fbFetchConfigSuccess = config => ({
+  type: types.FB_FETCH_CONFIG_SUCCESS,
+  config,
+});
+
+/**
+ * Creates the dispatched FB_FETCH_CONFIG action object.
+ * @return {{type: string }}
+ */
+export const fbFetchConfigFailed = () => ({
+  type: types.FB_FETCH_CONFIG_FAILED,
+});

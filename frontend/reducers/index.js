@@ -4,11 +4,15 @@ import {
   FB_LOGOUT_SUCCESS,
   FB_LOGIN_FAILED,
   FB_TOGGLE,
+  FB_FETCH_CONFIG_SUCCESS,
 } from './../constants/ActionTypes';
 
 const initialState = {
   visible: false,
   disabled: false,
+  config: {
+    enabled: false,
+  },
 };
 
 /**
@@ -42,6 +46,14 @@ export default (state = initialState, action) => {
       return {
         ...state,
         visible: false,
+      };
+
+    case FB_FETCH_CONFIG_SUCCESS:
+      return {
+        ...state,
+        config: {
+          ...action.config,
+        },
       };
 
     case FB_LOGOUT_SUCCESS:

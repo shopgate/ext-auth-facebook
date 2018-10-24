@@ -11,6 +11,11 @@ const buttonWrapper = css({
   marginRight: isIos ? variables.gap.bigger : 0,
 }).toString();
 
+const buttonContained = css({
+  marginLeft: 0,
+  marginRight: 0,
+}).toString();
+
 const button = css({
   width: '100%',
   backgroundColor: '#475a96!important',
@@ -31,6 +36,7 @@ const padLine = css({
 
 export default {
   buttonWrapper,
+  buttonContained,
   button,
   fbIcon,
   padLine,

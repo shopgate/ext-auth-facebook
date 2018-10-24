@@ -14,6 +14,7 @@
   "devDependencies": {
     "@shopgate/eslint-config": "5.9.0-beta.4",
     "@shopgate/pwa-common": "5.9.0-beta.4",
+    "@shopgate/pwa-common-commerce": "5.9.0-beta.4",
     "@shopgate/pwa-core": "5.9.0-beta.4",
     "@shopgate/pwa-ui-shared": "5.9.0-beta.4",
     "@shopgate/pwa-unit-test": "5.9.0-beta.4",
