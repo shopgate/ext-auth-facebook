@@ -5,7 +5,7 @@ import { getDisabled, getVisible, isActivated } from '../../../../selectors';
 
 /**
  * @param {Object} state state
- * @return {{disabled: boolean, hidden: boolean}}
+ * @return {{disabled: boolean, visible: boolean, activated: boolean}}
  */
 const mapStateToProps = state => ({
   disabled: getDisabled(state),
@@ -15,7 +15,7 @@ const mapStateToProps = state => ({
 
 /**
  * @param {function} dispatch dispatch
- * @return {{addAddress: function, updateAddress: function, deleteAddress: function}}
+ * @return {{login: function}}
  */
 const mapDispatchToProps = dispatch => ({
   login: () => dispatch(facebookLogin()),

@@ -10,9 +10,8 @@ import fetchConfig from '../actions/fetchConfig';
  */
 export default (subscribe) => {
   subscribe(appDidStart$, ({ dispatch }) => {
-
     // Fetch config during app start.
-    dispatch(fetchConfig())
+    dispatch(fetchConfig());
 
     // Handle callbacks/events from app for facebook login.
     registerEvents([

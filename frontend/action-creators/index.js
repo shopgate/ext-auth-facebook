@@ -73,7 +73,7 @@ export const fbFetchConfigSuccess = config => ({
 });
 
 /**
- * Creates the dispatched FB_FETCH_CONFIG action object.
+ * Creates the dispatched FB_FETCH_CONFIG_FAILED action object.
  * @return {{type: string }}
  */
 export const fbFetchConfigFailed = () => ({

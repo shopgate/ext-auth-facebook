@@ -1,6 +1,6 @@
 /**
- * Sanitzes incoming config.
- * @param {Object} context Application context.
+ * Sanitizes incoming config.
+ * @param {SDKContext} context context
  * @param {Object} input Step input.
  */
 module.exports = async (context, { config }) => ({

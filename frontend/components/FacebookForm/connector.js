@@ -4,7 +4,7 @@ import { getVisible, isActivated } from './../../selectors';
 
 /**
  * @param {Object} state state
- * @return {{disabled: boolean, hidden: boolean}}
+ * @return {{visible: boolean, activated: boolean}}
  */
 const mapStateToProps = state => ({
   visible: !isUserLoggedIn(state) && getVisible(state),

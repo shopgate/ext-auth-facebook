@@ -1,8 +1,9 @@
 /**
- * Returns defualt configuration if request failed.
- * @param {Object} err
- * @param {Object} context
- * @param {Object} input
+ * Returns default configuration if request failed.
+ * @param {Error} err
+ * @param {SDKContext} context
+ * @param {{config: Object}} input
+ * @returns {Promise<{config: Object}>}
  */
 module.exports = async (err, context, input) => {
   if (err) {
@@ -12,6 +13,5 @@ module.exports = async (err, context, input) => {
       }
     }
   }
-
   return input
 }

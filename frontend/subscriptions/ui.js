@@ -4,7 +4,6 @@ import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading
 import { disableLogin } from '@shopgate/pwa-common/action-creators/user';
 import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { themeName } from '@shopgate/pwa-common/helpers/config';
 import { userDidLogin$, loginDidFail$ } from '@shopgate/pwa-common/streams/user';
 import { fbWillLogin$, fbDidLogin$, fbLoginFailed$ } from '../streams/user';
@@ -16,11 +15,11 @@ const isIos = themeName.includes('ios');
 const MORE_PATH = '/more';
 
 export default (subscribe) => {
-  // Token was aquired and logic action finished. (failed or suceeded)
-  const finsihFbWithToken$ = fbDidLogin$.mergeMap(() => userDidLogin$.merge(loginDidFail$));
-  // No token was aquired.
+  // Token was acquired and logic action finished. (failed or succeeded)
+  const finishFbWithToken$ = fbDidLogin$.mergeMap(() => userDidLogin$.merge(loginDidFail$));
+  // No token was acquired.
   const finishFbWithoutToken$ = fbWillLogin$.mergeMap(() => fbLoginFailed$);
-  const finishFb$ = finsihFbWithToken$.merge(finishFbWithoutToken$);
+  const finishFb$ = finishFbWithToken$.merge(finishFbWithoutToken$);
 
   let fbPathEnter$;
   let fbPathLeave$;
