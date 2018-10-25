@@ -12,12 +12,14 @@ import { fbToggle } from '../action-creators';
 const isGmd = themeName.includes('gmd');
 const isIos = themeName.includes('ios');
 
+const MORE_PATH = '/more';
+
 export default (subscribe) => {
-  // Token was aquired and logic action finished. (failed or suceeded)
-  const finsihFbWithToken$ = fbDidLogin$.mergeMap(() => userDidLogin$.merge(loginDidFail$));
-  // No token was aquired.
+  // Token was acquired and logic action finished. (failed or succeeded)
+  const finishFbWithToken$ = fbDidLogin$.mergeMap(() => userDidLogin$.merge(loginDidFail$));
+  // No token was acquired.
   const finishFbWithoutToken$ = fbWillLogin$.mergeMap(() => fbLoginFailed$);
-  const finishFb$ = finsihFbWithToken$.merge(finishFbWithoutToken$);
+  const finishFb$ = finishFbWithToken$.merge(finishFbWithoutToken$);
 
   let fbPathEnter$;
   let fbPathLeave$;
@@ -28,8 +30,10 @@ export default (subscribe) => {
     fbPathLeave$ = routeDidLeave(LOGIN_PATH);
   }
   if (isIos) {
-    fbPathEnter$ = routeDidEnter('/more');
-    fbPathLeave$ = routeDidLeave('/more');
+    fbPathEnter$ = routeDidEnter(MORE_PATH).merge(routeDidEnter(LOGIN_PATH));
+    fbPathLeave$ = routeDidLeave(MORE_PATH)
+      .filter(action => action.pathname !== LOGIN_PATH)
+      .merge(routeDidLeave(LOGIN_PATH).filter(action => action.pathname !== MORE_PATH));
   }
 
   // Login is disabled as soon as login process is started and loading indicators are shown.
