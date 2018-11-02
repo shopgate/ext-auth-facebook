@@ -57,8 +57,11 @@ export default (state = initialState, action) => {
       };
 
     case FB_LOGOUT_SUCCESS:
-      return initialState;
-
+      return {
+        ...state,
+        visible: false,
+        disabled: false,
+      };
     default:
       return state;
   }
