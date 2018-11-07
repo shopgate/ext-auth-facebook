@@ -70,7 +70,7 @@
     {
       "path": "extension/auth/login.js",
       "description": "Auth with facebook strategy",
-      "hooks" : ["shopgate.user.loginUser.v1:loginUser"],
+      "hooks" : ["shopgate.user.loginUser.v1:loginToService"],
       "input" : [
         {"key": "strategy"},
         {"key": "parameters"}
