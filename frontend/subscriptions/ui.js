@@ -2,12 +2,12 @@ import { routeDidEnter, routeDidLeave } from '@shopgate/pwa-common/streams/histo
 import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
 import { disableLogin } from '@shopgate/pwa-common/action-creators/user';
-import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { themeName } from '@shopgate/pwa-common/helpers/config';
 import { userDidLogin$, loginDidFail$ } from '@shopgate/pwa-common/streams/user';
 import { fbWillLogin$, fbDidLogin$, fbLoginFailed$ } from '../streams/user';
 import { fbToggle } from '../action-creators';
+import { getPathName } from '../selectors';
 
 const isGmd = themeName.includes('gmd');
 const isIos = themeName.includes('ios');
@@ -38,19 +38,20 @@ export default (subscribe) => {
 
   // Login is disabled as soon as login process is started and loading indicators are shown.
   subscribe(fbWillLogin$, ({ dispatch, getState }) => {
-    dispatch(setViewLoading(getHistoryPathname(getState())));
+    dispatch(setViewLoading(getPathName(getState())));
     dispatch(disableLogin(true));
   });
 
   // View is idle when login process is fully done.
   subscribe(finishFb$, ({ dispatch, getState }) => {
-    dispatch(unsetViewLoading(getHistoryPathname(getState())));
+    dispatch(unsetViewLoading(getPathName(getState())));
     dispatch(disableLogin(false));
   });
 
   // Show a button on gmd theme
-  subscribe(fbPathEnter$, ({ dispatch }) => {
-    dispatch(fbToggle(true));
+  subscribe(fbPathEnter$, ({ dispatch, action }) => {
+    const { historyProps: { pathname = '' } = {} } = action;
+    dispatch(fbToggle(true, pathname));
   });
 
   // Show a button on ios theme

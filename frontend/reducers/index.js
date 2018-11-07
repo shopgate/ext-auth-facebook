@@ -13,6 +13,7 @@ const initialState = {
   config: {
     enabled: false,
   },
+  pathName: '',
 };
 
 /**
@@ -33,6 +34,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         visible: action.visible,
+        pathName: action.pathName || state.pathName,
       };
 
     case ERROR_LOGIN:
