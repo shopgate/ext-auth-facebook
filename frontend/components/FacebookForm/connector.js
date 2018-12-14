@@ -4,11 +4,10 @@ import { getVisible, isActivated } from './../../selectors';
 
 /**
  * @param {Object} state state
- * @return {{visible: boolean, activated: boolean}}
+ * @return {{visible: boolean}}
  */
 const mapStateToProps = state => ({
-  visible: !isUserLoggedIn(state) && getVisible(state),
-  activated: isActivated(state),
+  visible: !isUserLoggedIn(state) && (getVisible(state) && isActivated(state)),
 });
 
 export default connect(mapStateToProps);

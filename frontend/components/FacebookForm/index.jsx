@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { RouteContext } from '@shopgate/pwa-common/context';
 import FacebookButton from './components/FacebookButton';
 import OrLine from './components/OrLine';
 import connect from './connector';
@@ -9,8 +10,8 @@ import connect from './connector';
  * @param {Object} props props
  * @returns {JSX}
  */
-const FacebookForm = ({ visible, activated }) => {
-  if (!visible || !activated) {
+const FacebookForm = ({ visible }) => {
+  if (!visible) {
     return null;
   }
 
@@ -23,9 +24,16 @@ const FacebookForm = ({ visible, activated }) => {
 };
 
 FacebookForm.propTypes = {
-  activated: PropTypes.bool.isRequired,
   visible: PropTypes.bool.isRequired,
 };
 
-export default connect(FacebookForm);
 
+export default connect(({ visible }) => (
+  <RouteContext.Consumer>
+    {({ visible: routeVisible }) => (
+      <FacebookForm
+        visible={routeVisible && visible}
+      />
+    )}
+  </RouteContext.Consumer>
+));

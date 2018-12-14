@@ -3,7 +3,6 @@ import {
   FB_LOGIN,
   FB_LOGOUT_SUCCESS,
   FB_LOGIN_FAILED,
-  FB_TOGGLE,
   FB_FETCH_CONFIG_SUCCESS,
 } from './../constants/ActionTypes';
 
@@ -30,13 +29,6 @@ export default (state = initialState, action) => {
         disabled: true,
       };
 
-    case FB_TOGGLE:
-      return {
-        ...state,
-        visible: action.visible,
-        pathName: action.pathName || state.pathName,
-      };
-
     case ERROR_LOGIN:
     case FB_LOGIN_FAILED:
       return {
@@ -47,7 +39,7 @@ export default (state = initialState, action) => {
     case SUCCESS_LOGIN:
       return {
         ...state,
-        visible: false,
+        disabled: true,
       };
 
     case FB_FETCH_CONFIG_SUCCESS:
@@ -56,12 +48,12 @@ export default (state = initialState, action) => {
         config: {
           ...action.config,
         },
+        visible: action.config.enabled,
       };
 
     case FB_LOGOUT_SUCCESS:
       return {
         ...state,
-        visible: false,
         disabled: false,
       };
     default:
