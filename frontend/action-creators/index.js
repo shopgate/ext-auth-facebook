@@ -45,18 +45,6 @@ export const fbLogoutSuccess = () => ({
 });
 
 /**
- * Creates the dispatched FB_TOGGLE action object.
- * @param {boolean} visible visible
- * @param {string} pathName path where FB button is located
- * @return {{type: string, visible: boolean}}
- */
-export const fbToggle = (visible, pathName = '') => ({
-  type: types.FB_TOGGLE,
-  visible,
-  pathName,
-});
-
-/**
  * Creates the dispatched FB_FETCH_CONFIG action object.
  * @return {{type: string }}
  */

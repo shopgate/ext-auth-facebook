@@ -3,6 +3,7 @@ import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import login from '@shopgate/pwa-common/actions/user/login';
 import { userWillLogout$ } from '@shopgate/pwa-common/streams/user';
 import { ERROR_USER } from '@shopgate/pwa-common/constants/ActionTypes';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import { fbDidLogin$ } from './../streams/user';
 import logout from './../actions/logout';
 import facebookLogout from './../actions/facebookLogout';
@@ -27,6 +28,7 @@ export default (subscribe) => {
 
   // Login user to connect and PWA
   subscribe(fbDidLogin$, ({ dispatch, action }) => {
-    dispatch(login(action.payload, 'facebook'));
+    const { state: { redirect: { location = '' } = {} } } = getCurrentRoute();
+    dispatch(login(action.payload, location, 'facebook'));
   });
 };
