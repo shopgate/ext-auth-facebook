@@ -6,14 +6,7 @@ const fields = [
   'name',
   'first_name',
   'last_name',
-  'age_range',
-  'link',
-  'gender',
-  'locale',
-  'picture',
-  'timezone',
-  'updated_time',
-  'verified'
+  'picture'
 ].join(', ')
 
 /**
@@ -60,7 +53,6 @@ module.exports = async (context, { strategy, parameters: { token, tokenExpiryDat
     mail: response.email,
     firstName: response.first_name,
     lastName: response.last_name,
-    gender: response.gender,
     birthday: null,
     phone: null,
     token,
