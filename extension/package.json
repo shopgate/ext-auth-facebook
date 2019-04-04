@@ -15,7 +15,7 @@
     "fb": "^2.0.0"
   },
   "devDependencies": {
-    "standard": "latest"
+    "standard": "^12.0.1"
   },
   "standard": {
     "env": [
