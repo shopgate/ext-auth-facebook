@@ -46,18 +46,28 @@
       "type": "reducers"
     },
     {
-      "id": "en-US",
-      "path": "frontend/locale/en-US.json",
-      "type": "translations"
-    },
-    {
       "id": "de-DE",
       "path": "frontend/locale/de-DE.json",
       "type": "translations"
     },
     {
+      "id": "en-US",
+      "path": "frontend/locale/en-US.json",
+      "type": "translations"
+    },
+    {
+      "id": "es-ES",
+      "path": "frontend/locale/es-ES.json",
+      "type": "translations"
+    },
+    {
       "id": "fr-FR",
       "path": "frontend/locale/fr-FR.json",
+      "type": "translations"
+    },
+    {
+      "id": "it-IT",
+      "path": "frontend/locale/it-IT.json",
       "type": "translations"
     },
     {
