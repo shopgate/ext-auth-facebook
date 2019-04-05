@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/auth-facebook",
-  "version": "2.0.1",
+  "version": "2.0.1-rc.1",
   "description": "Shopgate Connect auth facebook extension",
   "repository": {
     "type": "git",
